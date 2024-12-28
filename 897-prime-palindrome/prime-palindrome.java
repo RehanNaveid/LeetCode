@@ -17,25 +17,33 @@ class Solution {
         }
 
     }
-    private boolean ispallindrome(int n){
-        String s=String.valueOf(n);
-        int i=0;
-        int j=s.length()-1;
-        while(j>i){
-            if(s.charAt(i)!=s.charAt(j)){
-                return false;
-            }
-            i++;
-            j--;
+    private boolean ispallindrome(int num){
+        // String s=String.valueOf(n);
+        // int i=0;
+        // int j=s.length()-1;
+        // while(j>i){
+        //     if(s.charAt(i)!=s.charAt(j)){
+        //         return false;
+        //     }
+        //     i++;
+        //     j--;
+        // }
+        // return true;
+       int temp=num;
+       int rev=0;
+
+        while (num>0) {
+            rev=rev*10+num%10;
+            num/=10;
         }
-        return true;
+        return temp==rev;
     }
     private boolean isprime(int n){
         if(n<=1){
             return false;
         }
         // i<= sqrt(n)
-        // i^2,=n
+        // i^2<=n
         for (int i = 2; i*i<= n; i += 1) { 
             if (n % i == 0) {
                 return false;
