@@ -1,13 +1,13 @@
 class Solution {
     public int primePalindrome(int n) {
         while(true){
+            if (n > 11 && String.valueOf(n).length()%2==0) {
+                n=(int)Math.pow(10,String.valueOf(n).length());
+            }
             if(isprime(n) && ispallindrome(n)){
                 return n;
             }
             n++;
-            if (n > 11 && String.valueOf(n).length()%2==0) {
-                n=(int)Math.pow(10,String.valueOf(n).length());
-            }
         }
 
     }
