@@ -1,6 +1,12 @@
 class Solution {
     public int primePalindrome(int n) {
         while(true){
+            //all even digit numbers pallindrome numbers are not prime except 11
+            //  22 is not prime
+            //    1221 is not prime
+            //      so we need to skip the values
+            //   skip from 22 to 100 as 22,33,44,55,... are not prime
+            //   so 10^2=100...the  power 2 is length of integer..in case of 22 it is 2..
             if (n > 11 && String.valueOf(n).length()%2==0) {
                 n=(int)Math.pow(10,String.valueOf(n).length());
             }
@@ -28,7 +34,7 @@ class Solution {
         if(n<=1){
             return false;
         }
-        for (int i = 2; i <= Math.sqrt(n); i += 1) { // Increment by 2 for odd numbers only.
+        for (int i = 2; i <= Math.sqrt(n); i += 1) { 
             if (n % i == 0) {
                 return false;
             }
