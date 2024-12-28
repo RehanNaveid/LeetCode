@@ -25,16 +25,10 @@ class Solution {
         return true;
     }
     private boolean isprime(int n){
-        if (n < 2) {
-            return false; // 0 and 1 are not prime.
+        if(n<=1){
+            return false;
         }
-        if (n == 2) {
-            return true; // 2 is prime.
-        }
-        if (n % 2 == 0) {
-            return false; // Eliminate even numbers > 2.
-        }
-        for (int i = 3; i <= Math.sqrt(n); i += 2) { // Increment by 2 for odd numbers only.
+        for (int i = 2; i <= Math.sqrt(n); i += 1) { // Increment by 2 for odd numbers only.
             if (n % i == 0) {
                 return false;
             }
