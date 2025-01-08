@@ -7,12 +7,13 @@ class Solution {
         for(int i=0;i<s.length();i++){
             char ch=s.charAt(i);
             if(ch>='0' && ch<='9'){
-                digit=true;
+                digit=true;//no preconditions for digits...can be +,-,e,. before and after digits
             }
             else if(ch=='e'||ch=='E'){
-                if(!digit||exponent)
+                if(!digit||exponent)//checks whether any previous states has e...a number can have only one e
+                //or the previous state that is not digit is always invalid
                     return false;
-                else{
+                else{//current state
                     exponent=true;
                     digit=false;
                     sign=false;
@@ -21,7 +22,7 @@ class Solution {
 
             }
             else if(ch=='+'||ch=='-'){
-                if(sign||digit||dot){
+                if(sign||digit||dot){//previous state that is digit ,sign,dot is invalid
                     return false;
                 }
                 else{
@@ -29,7 +30,7 @@ class Solution {
                 }
             }
             else if(ch=='.'){
-                if(exponent||dot){
+                if(exponent||dot){//dot after exponent is invalid
                     return false;
                 }
                 else{
@@ -40,6 +41,6 @@ class Solution {
                 return false;
             }
         }
-        return digit;
+        return digit;//last state should contain digit 
     }
 }
