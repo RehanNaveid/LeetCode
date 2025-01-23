@@ -3,20 +3,14 @@ class Solution {
         int rows = board.length;
         int cols = board[0].length;
 
-        // find region with border 0
+        // find region with border )O and mark as R
+        //the elements that are marked R are not surrounded by X
         for (int i = 0; i < rows; i++) {
             for(int j=0;j < cols;j++){
                 if((i==0||j==0||i==rows-1||j==cols-1)&&(board[i][j]=='O'))
                 markEdgeConnected(board, rows, cols, i, j);
             }
-            // if (board[i][0] == 'O') 
-            // if (board[i][cols - 1] == 'O') markEdgeConnected(board, rows, cols, i, cols - 1);
         }
-        // for (int j = 0; j < cols; j++) {
-        //     if (board[0][j] == 'O') markEdgeConnected(board, rows, cols, 0, j);
-        //     if (board[rows - 1][j] == 'O') markEdgeConnected(board, rows, cols, rows - 1, j);
-        // }
-
         // Step 2: Replace all remaining 'O's with 'X' and all 'R's back to 'O'
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
