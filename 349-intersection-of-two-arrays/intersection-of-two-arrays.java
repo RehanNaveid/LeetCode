@@ -6,8 +6,9 @@ class Solution {
             set.add(nums1[i]);
         }
         for(int i=0;i<nums2.length;i++){
-            if(set.contains(nums2[i])&& !list.contains(nums2[i])){
+            if(set.contains(nums2[i])){
                 list.add(nums2[i]);
+                set.remove(nums2[i]);
             }
         }
         int res[]=new int[list.size()];
