@@ -9,9 +9,9 @@ class Solution {
             }
         }
         int result=0;
-        for(int cont:map.values()){
-            if(cont>1){
-                result+=8*(cont*(cont-1)/2);
+        for(int count:map.values()){
+            if(count>1){
+                result+=8*(count*(count-1)/2);
             }
         }
         return result;
