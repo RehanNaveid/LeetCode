@@ -3,9 +3,9 @@ class Solution {
         for(int i=0;i<r;i++){
             if(arr[i][c]==1)return false;
         }
-        for(int i=0;i<c;i++){
-            if(arr[r][i]==1)return false;
-        }
+        // for(int i=0;i<c;i++){
+        //     if(arr[r][i]==1)return false;
+        // }
         for(int i=r,j=c;i>=0 && j>=0;i--,j--){
             if(arr[i][j]==1)return false;
         }
