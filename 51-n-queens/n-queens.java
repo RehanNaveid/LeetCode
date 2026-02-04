@@ -1,55 +1,55 @@
 class Solution {
+    public boolean isSafe(int[][] arr,int r,int c,int n){
+        for(int i=0;i<r;i++){
+            if(arr[i][c]==1)return false;
+        }
+        for(int i=0;i<c;i++){
+            if(arr[r][i]==1)return false;
+        }
+        for(int i=r,j=c;i>=0 && j>=0;i--,j--){
+            if(arr[i][j]==1)return false;
+        }
+        for(int i=r,j=c;i>=0 && j<n;i--,j++){
+            if(arr[i][j]==1)return false;
+        }
+
+        return true;
+    }
+
+
     public List<List<String>> solveNQueens(int n) {
+        int[][] arr=new int[n][n];
         List<List<String>> res=new ArrayList<>();
-        int arr[][]=new int[n][n];
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
                 arr[i][j]=0;
             }
         }
-        queenplace(res,n,arr,0);
+        solve(arr,res,0,n);
         return res;
     }
-    public  void queenplace( List<List<String>> res,int n,int[][] arr,int row)
-    {
-        int col;
-        if(row==n){
-            List<String> lst=new ArrayList<>();
+
+    public void solve(int[][] arr,List<List<String>> res,int r,int n){
+        if(r==n){
+            List<String> list=new ArrayList<>();
             for(int i=0;i<n;i++){
-                char ch[]=new char[n];
+                char[] ch=new char[n];
                 for(int j=0;j<n;j++){
-                    if(arr[i][j]==1)
-                    ch[j]='Q';
-                    else
-                    ch[j]='.';
+                    if(arr[i][j]==1)ch[j]='Q';
+                    else ch[j]='.';
                 }
-                lst.add(String.valueOf(ch));
+                list.add(String.valueOf(ch));
             }
-            res.add(lst);
+            res.add(list);
         }
         else{
-            for(col=0;col<n;col++){
-                if(isSafe(arr,row,col)==1){
-                    arr[row][col]=1;
-                    queenplace(res,n,arr,row+1);
-                    arr[row][col]=0;
+            for(int c=0;c<n;c++){
+                if(isSafe(arr,r,c,n)){
+                    arr[r][c]=1;
+                    solve(arr,res,r+1,n);
+                    arr[r][c]=0;
                 }
             }
         }
-    }
-    public int isSafe(int arr[][],int row,int col){
-        for(int i=row;i>=0;i--){
-            if(arr[i][col]==1)
-            return 0;
-        }
-        for(int i=row,j=col;i>=0&&j>=0;i--,j--){
-            if(arr[i][j]==1)
-            return 0;
-        }
-        for(int i=row,j=col;i>=0&&j<arr[0].length;i--,j++){
-            if(arr[i][j]==1)
-            return 0;
-        }
-        return 1;
     }
 }
